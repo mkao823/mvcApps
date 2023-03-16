@@ -4,7 +4,7 @@ package minefield;
 import mvc.Command;
 import mvc.Model;
 import mvc.View;
-import mvc.AppFactory;
+import mvc.AppFactory
 
 public class MinefieldFactory implements AppFactory{
     public Model makeModel() { return new Stoplight(); }
