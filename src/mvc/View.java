@@ -5,20 +5,23 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class View extends JPanel implements PropertyChangeListener {
-    private Model model;
+    public Model model;
 
     public View(Model m) {
         model = m;
+        model.addPropertyChangeListener(this);
     }
 
     public void setModel(Model newModel) {
         model.removePropertyChangeListener(this);
         model = newModel;
+        this.model.initSupport();
         model.addPropertyChangeListener(this);
+        repaint();
     }
 
-    public void propertyChange(PropertyChangeEvent event) {
-
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        repaint();
     }
-
 }

@@ -8,7 +8,7 @@ public class Model extends Bean {
 
     public void changed() {
         unsavedChanges = true;
-        firePropertyChange(null, null,null);
+        firePropertyChange("model", 0,1);
     }
 
     public String getFileName(){
