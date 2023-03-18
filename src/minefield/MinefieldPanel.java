@@ -1,6 +1,7 @@
 package minefield;
 
 import StopLight.StoplightPanel;
+import StopLight.StoplightFactory;
 import mvc.AppFactory;
 import mvc.AppPanel;
 import mvc.*;
@@ -12,7 +13,7 @@ public class MinefieldPanel extends AppPanel{
         super(factory);
         change = new JButton("Change");
         change.addActionListener(this);
-        StoplightPanel.add(change);
+        super.addControl(change);
     }
 
     public static void main(String[] args) {

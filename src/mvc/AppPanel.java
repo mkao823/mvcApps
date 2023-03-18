@@ -121,7 +121,7 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
                 }
 
                 default: {
-                    factory.makeEditCommand(model, cmmd).execute();
+                    factory.makeEditCommand(model, cmmd, this).execute();
                     break;
                 }
             }
@@ -138,7 +138,9 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
     public void propertyChange(PropertyChangeEvent evt) {
         repaint();
     }
-
+    public void addControl(JComponent c){
+        control.add(c);
+    }
     public static class ControlPanel extends JPanel {
         public ControlPanel() {
             setBackground(Color.PINK);

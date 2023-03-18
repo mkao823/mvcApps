@@ -7,10 +7,10 @@ import mvc.View;
 import mvc.AppFactory;
 
 public class MinefieldFactory implements AppFactory{
-    public Model makeModel() { return new Stoplight(); }
+    public Model makeModel() { return new Minefield(); }
 
     public View makeView(Model m) {
-        return new StoplightView((Stoplight)m);
+        return new MinefieldView((Minefield)m);
     }
 
     public String[] getEditCommands() { return new String[] {"Change"}; }
@@ -18,7 +18,7 @@ public class MinefieldFactory implements AppFactory{
     // source added 3/15 to support text fields
     public Command makeEditCommand(Model model, String type, Object source) {
         if (type == "Change")
-            return new ChangeCommand(model);
+            return new MoveCommand(model);
         return null;
     }
 

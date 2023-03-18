@@ -2,7 +2,7 @@ package StopLight;
 
 import java.awt.*;
 import javax.swing.*;
-
+import StopLight.StoplightFactory;
 import mvc.*;
 
 
@@ -12,7 +12,9 @@ public class StoplightPanel extends AppPanel {
         super(factory);
         change = new JButton("Change");
         change.addActionListener(this);
-        controlPanel.add(change);
+        //need to add change to control panel
+        //controlPanel.add(change);
+        super.addControl(change);
     }
 
     public static void main(String[] args) {

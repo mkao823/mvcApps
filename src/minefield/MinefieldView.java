@@ -1,20 +1,21 @@
 package minefield;
 
-import StopLight.Stoplight;
+import mvc.*;
 
 import java.awt.*;
 
 public class MinefieldView extends View {
-    public StoplightView(Stoplight light) {
-        super(light);
+
+    public MinefieldView(Model mine) {
+        super(mine);
     }
 
-    public void paintComponent(Graphics gc) {
+    /*public void paintComponent(Graphics gc) {
         super.paintComponent(gc);
         Color oldColor = gc.getColor();
-        Stoplight light = (Stoplight)model;
-        StopLightShape shape = new StopLightShape(light);
+        Model mod = (Minefield)model;
+        Minefield shape = new Minefield(mod);
         shape.draw((Graphics2D) gc);
         gc.setColor(oldColor);
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ public class MoveCommand extends Command {
     }
 
     public void execute() {
-        Stoplight light = (Stoplight)model;
-        light.change();
+        Minefield minefield = (Minefield)model;
+        //minefield.change();
     }
 }
