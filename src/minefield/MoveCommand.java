@@ -11,12 +11,16 @@ public class MoveCommand extends Command {
 
     public void execute() {
         Minefield minefield = (Minefield)model;
+        if(!minefield.getActive()) {
+            Utilities.inform("The Game is Over");
+            return;
+        }
         //move throws exception, we need to handle exception when we call it
         try{
             minefield.move(heading);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            Utilities.inform(e.getMessage());
+            minefield.setActive(false);
         }
-        //minefield.change();
     }
 }
