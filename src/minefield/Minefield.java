@@ -86,8 +86,8 @@ public class Minefield extends Model {
         patches[xValue][yValue].occupied = true;
 
     }
-    public Patch[][] getPatches() {
-        return patches;
+    public Patch getPatches(int x, int y) {
+        return patches[x][y];
     }
 
     public int getLength() {
