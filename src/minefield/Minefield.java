@@ -94,12 +94,12 @@ public class Minefield extends Model {
         //after checking for exceptions, store changes
         //change original value of occupied patch to false, set location to new xValue,yValue
         //set occupied of new location to true
-        patches[getLocationX()][getLocationY()].occupied = false;
         location = new Point(xValue, yValue);
         path.add(location);
         patches[xValue][yValue].occupied = true;
-
+        changed();
     }
+    
     public Patch getPatches(int x, int y) {
         return patches[x][y];
     }
