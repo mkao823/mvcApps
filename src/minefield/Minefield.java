@@ -13,6 +13,7 @@ public class Minefield extends Model {
     private Patch[][] patches; //2d array of patches
     private int length = 20;
     private int height = 20;
+    private boolean active;
     private Point location;
     private List<Point> path;
     public Minefield(){
@@ -50,6 +51,7 @@ public class Minefield extends Model {
         set a goal on bottom right corner, make sure there is no mine on the goal
         mines are determined prior to this assignment so we can ensure the goal is not a mine
          */
+        active = true;
         location = new Point(0, 0);
         path = new LinkedList<Point>();
         path.add(location);
@@ -113,6 +115,14 @@ public class Minefield extends Model {
     public int getHeight() {
         return height;
     }
+    
+    public void setActive(Boolean b) {
+        this.active = b;
+    }
+
+    public boolean getActive(){
+        return this.active;
+    }
 
     public int getLocationX() {
         return location.getX();
@@ -120,9 +130,5 @@ public class Minefield extends Model {
 
     public int getLocationY(){
         return location.getY();
-    }
-
-    public List<Point> getPath() {
-        return path;
     }
 }
