@@ -19,10 +19,8 @@ public class View extends JPanel implements PropertyChangeListener {
         model.addPropertyChangeListener(this);
         repaint();
     }
-
+    @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        //System.out.println("Property Changed");
-        if(evt.getPropertyName().equals("unsavedChanges"))
-            repaint();
+        repaint();
     }
 }
