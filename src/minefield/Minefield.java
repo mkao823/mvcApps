@@ -28,6 +28,20 @@ public class Minefield extends Model {
                 }
             }
         }
+        
+        // Initialize the number of surrounding mine for each patch
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < height; j++){
+                for(int k = i - 1; k <= i + 1; k++){
+                    for(int l = j - 1; l <= j + 1; l++){
+                        if((k != i || l != j) && !(k < 0 || k > length - 1 || l < 0 || l > height - 1)
+                            && patches[k][l].mine) {
+                            patches[i][j].increamentSurMines();
+                        }
+                    }
+                }
+            }
+        }
         //designate player location
         /*
         need to be able to show how many mines are around a player location
@@ -41,8 +55,8 @@ public class Minefield extends Model {
         path.add(location);
         patches[length - 1][height - 1].goal = true;
         patches[length - 1][height - 1].mine = false;
-
     }
+    
     public void move(Heading heading) throws Exception{
         //we are bit using canvas but our actual location in 2darray, so don't need to change y direction (up->down)
         int xValue = getLocationX();
