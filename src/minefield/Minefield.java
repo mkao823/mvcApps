@@ -33,10 +33,14 @@ public class Minefield extends Model {
         need to be able to show how many mines are around a player location
         need to make sure this is updated when we move
         add path to store previous locations Linkedlist
+        set a goal on bottom right corner, make sure there is no mine on the goal
+        mines are determined prior to this assignment so we can ensure the goal is not a mine
          */
         location = new Point(0, 0);
         path = new LinkedList<Point>();
         path.add(location);
+        patches[length - 1][height - 1].goal = true;
+        patches[length - 1][height - 1].mine = false;
 
     }
     public void move(Heading heading) throws Exception{
@@ -67,6 +71,20 @@ public class Minefield extends Model {
         if (xValue < 0 || yValue < 0 || xValue >= length || yValue >= height){
             throw new Exception("You have reached the boundary");
         }
+        if (patches[xValue][yValue].mine){
+            throw new Exception("You have hit a mine!");
+        }
+        if (patches[xValue][yValue].goal){
+            throw new Exception("You win!");
+        }
+        //after checking for exceptions, store changes
+        //change original value of occupied patch to false, set location to new xValue,yValue
+        //set occupied of new location to true
+        patches[getLocationX()][getLocationY()].occupied = false;
+        location = new Point(xValue, yValue);
+        path.add(location);
+        patches[xValue][yValue].occupied = true;
+
     }
     public Patch[][] getPatches() {
         return patches;
