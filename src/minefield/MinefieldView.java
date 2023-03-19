@@ -48,11 +48,6 @@ public class MinefieldView extends View {
                     gc.drawString("?", (dim * row) + dim / 3,(dim * (col + 1)) );
                 }
 
-                if(cells[row][col].patch.mine){
-                    gc.setColor(Color.magenta);
-                    gc.drawRect(dim * row + 4, dim * col + 5, dim - 3, dim - 3);
-                }
-
                 if(cells[row][col].patch.goal){
                     gc.setColor(Color.GREEN);
                 }
