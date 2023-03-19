@@ -53,6 +53,8 @@ public class Minefield extends Model {
         location = new Point(0, 0);
         path = new LinkedList<Point>();
         path.add(location);
+        patches[getLocationX()][getLocationY()].mine = false;
+        patches[getLocationX()][getLocationY()].occupied = true;
         patches[length - 1][height - 1].goal = true;
         patches[length - 1][height - 1].mine = false;
     }
@@ -62,9 +64,9 @@ public class Minefield extends Model {
         int xValue = getLocationX();
         int yValue = getLocationY();
         if(heading == Heading.NORTH)
-            yValue++;
-        else if(heading == Heading.SOUTH)
             yValue--;
+        else if(heading == Heading.SOUTH)
+            yValue++;
         else if(heading == Heading.EAST)
             xValue++;
         else if(heading == Heading.WEST)

@@ -18,7 +18,6 @@ public class MinefieldFactory implements AppFactory{
     public String[] getEditCommands() {
         return new String[] {"N", "S","E", "W","NE", "SE","NW", "SW", }; }
 
-    // source added 3/15 to support text fields
     public Command makeEditCommand(Model model, String type, Object source) {
         if (type == "N")
             return new MoveCommand(model, Heading.NORTH);
