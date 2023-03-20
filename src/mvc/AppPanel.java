@@ -19,13 +19,13 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
 
     public AppPanel(AppFactory factory) {
         this.factory = factory;
-        model = this.factory.makeModel();
-        view = this.factory.makeView(model);
-        control = new ControlPanel();
+        this.model = this.factory.makeModel();
+        this.view = this.factory.makeView(this.model);
+        this.control = new ControlPanel();
 
         setLayout((new GridLayout(1,2)));
-        this.add(control);
-        this.add(view);
+        this.add(this.control);
+        this.add(this.view);
 
         frame = new SafeFrame();
         Container cp = frame.getContentPane();
@@ -138,9 +138,11 @@ public class AppPanel extends JPanel implements ActionListener, PropertyChangeLi
     public void propertyChange(PropertyChangeEvent evt) {
         repaint();
     }
+
     public void addControl(JComponent c){
         control.add(c);
     }
+
     public static class ControlPanel extends JPanel {
         public ControlPanel() {
             setBackground(Color.PINK);

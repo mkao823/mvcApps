@@ -2,7 +2,7 @@ package mvc;
 
 public class Model extends Bean {
     boolean unsavedChanges = false;
-    String fileName;
+    String fileName = null;
 
     public Model() {}
 

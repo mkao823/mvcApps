@@ -15,6 +15,7 @@ public class MoveCommand extends Command {
             Utilities.inform("The Game is Over");
             return;
         }
+
         //move throws exception, we need to handle exception when we call it
         try{
             minefield.move(heading);

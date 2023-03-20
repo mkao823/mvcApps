@@ -1,10 +1,7 @@
 package minefield;
 
 
-import mvc.Command;
-import mvc.Model;
-import mvc.View;
-import mvc.AppFactory;
+import mvc.*;
 
 public class MinefieldFactory implements AppFactory{
     public Model makeModel() {

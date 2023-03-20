@@ -3,12 +3,10 @@ package minefield;
 import mvc.*;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
-
+import java.util.List;
 
 public class Minefield extends Model {
-    //Patches are mined randomly. I use a static variable to determine the percentage of mined patches:
     public static int percentMined = 5;
     private Patch[][] patches; //2d array of patches
     private int length = 20;
@@ -29,14 +27,13 @@ public class Minefield extends Model {
                 }
             }
         }
-        
-        // Initialize the number of surrounding mine for each patch
+
         for(int i = 0; i < length; i++){
             for(int j = 0; j < height; j++){
                 for(int k = i - 1; k <= i + 1; k++){
                     for(int l = j - 1; l <= j + 1; l++){
                         if((k != i || l != j) && !(k < 0 || k > length - 1 || l < 0 || l > height - 1)
-                            && patches[k][l].mine) {
+                                && patches[k][l].mine) {
                             patches[i][j].increamentSurMines();
                         }
                     }
@@ -60,7 +57,6 @@ public class Minefield extends Model {
         patches[length - 1][height - 1].goal = true;
         patches[length - 1][height - 1].mine = false;
     }
-    
     public void move(Heading heading) throws Exception{
         //we are bit using canvas but our actual location in 2darray, so don't need to change y direction (up->down)
         int xValue = getLocationX();
@@ -75,16 +71,16 @@ public class Minefield extends Model {
             xValue--;
         else if(heading == Heading.NORTHEAST){
             xValue++;
-            yValue++;}
+            yValue--;}
         else if(heading == Heading.NORTHWEST){
             xValue-- ;
-            yValue++;}
+            yValue--;}
         else if(heading == Heading.SOUTHEAST){
             xValue++;
-            yValue--;}
+            yValue++;}
         else if(heading == Heading.SOUTHWEST){
             xValue--;
-            yValue--;}
+            yValue++;}
         //throw exceptions for boundary
         if (xValue < 0 || yValue < 0 || xValue >= length || yValue >= height){
             throw new Exception("You have reached the boundary");
@@ -95,17 +91,15 @@ public class Minefield extends Model {
         if (patches[xValue][yValue].goal){
             throw new Exception("You win!");
         }
-        //after checking for exceptions, store changes
-        //change original value of occupied patch to false, set location to new xValue,yValue
-        //set occupied of new location to true
+
         location = new Point(xValue, yValue);
         path.add(location);
         patches[xValue][yValue].occupied = true;
         changed();
     }
-    
-    public Patch getPatches(int x, int y) {
-        return patches[x][y];
+
+    public Patch getPatches(int i, int j) {
+        return patches[i][j];
     }
 
     public int getLength() {
@@ -115,7 +109,7 @@ public class Minefield extends Model {
     public int getHeight() {
         return height;
     }
-    
+
     public void setActive(Boolean b) {
         this.active = b;
     }
